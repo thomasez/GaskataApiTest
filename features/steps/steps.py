@@ -18,6 +18,16 @@ from zato.apitest import steps as default_steps
 from zato.apitest.steps.json import set_pointer
 from zato.apitest.util import obtain_values
 
+@given('Autheticate user without user but with password "{auth_user_password}"')
+@obtain_values
+def given_authenticate_password_only(context,auth_user_password):
+    url = "/aa/auth"
+    context.zato.request.query_string = ''
+    context.zato.request.url_path = url
+    post_data = {'password': auth_user_password}
+    context.zato.request.data_impl = post_data
+    context.zato.debug_info = post_data
+
 @given('Autheticate user with user ident "{auth_user_ident}" and no password nor token')
 @obtain_values
 def given_authenticate_user_ident(context,auth_user_ident):
