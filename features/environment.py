@@ -46,7 +46,7 @@ def after_step(context, step):
         print("/ debuginfo")
         sys.exit(1)
         
-def after_feature(context, feature):
+def after_scenario(context, scenario):
     pp = pprint.PrettyPrinter(indent=4, depth=5)
         
     if PRINT_VERBOSE_OUTPUT:
