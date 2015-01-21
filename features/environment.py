@@ -63,7 +63,7 @@ def after_scenario(context, scenario):
 
     if PRINT_DOC_ON_PASSED:
         import json
-        print("= " + str(feature.name) + " =")
+        print("= " + str(scenario.name) + " =")
         try:
             print("== Example ==")
             print("=== Request: ===")
