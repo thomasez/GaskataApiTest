@@ -28,7 +28,7 @@ PRINT_VERBOSE_OUTPUT = _bool(os.environ.get("PRINT_VERBOSE_OUTPUT", "no"))
 
 def after_step(context, step):
     if BEHAVE_DEBUG_ON_ERROR and step.status == "failed":
-        print("Feila!")
+        print("Failed " + step.name)
         print("request:\n")
         pp = pprint.PrettyPrinter(indent=4, depth=3)
         pp.pprint(context.zato.request)
@@ -49,7 +49,7 @@ def after_step(context, step):
 def after_scenario(context, scenario):
     pp = pprint.PrettyPrinter(indent=4, depth=5)
         
-    if PRINT_VERBOSE_OUTPUT:
+    if PRINT_VERBOSE_OUTPUT and scenario.status == "passed":
         try:
             print("Request:")
             pp.pprint(context.zato.request.get('method', 'GET'))
@@ -61,7 +61,7 @@ def after_scenario(context, scenario):
         pp.pprint(context.zato.get('debug_info', None))
         print("/ debuginfo")
 
-    if PRINT_DOC_ON_PASSED:
+    if PRINT_DOC_ON_PASSED and scenario.status == "passed":
         import json
         print("= " + str(scenario.name) + " =")
         try:
