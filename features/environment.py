@@ -44,7 +44,6 @@ def after_step(context, step):
         print("debuginfo")
         print("DEBUG:" + str(context.zato.get('debug_info', 'Nothing')))
         print("/ debuginfo")
-        sys.exit(1)
         
 def after_scenario(context, scenario):
     pp = pprint.PrettyPrinter(indent=4, depth=5)
