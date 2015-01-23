@@ -58,3 +58,18 @@ def given_authenticate_user_email_password(context,auth_user_email,auth_user_pas
     context.zato.request.data_impl = post_data
     context.zato.debug_info = post_data
 
+@then('The text "{text}" is in the response data.')
+@obtain_values
+def then_text_in_response(context, text):
+    import re
+    value = context.zato.response.data_impl
+    assert text in value, 'Text "`{}`" is not in response.'.format(text)
+    return True
+
+@then('The text "{text}" isn\'t in the response data.')
+@obtain_values
+def then_text_in_response(context, text):
+    import re
+    value = context.zato.response.data_impl
+    assert text not in value, 'Text "`{}`" is in response.'.format(text)
+
