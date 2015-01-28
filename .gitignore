@@ -54,5 +54,6 @@ docs/_build/
 target/
 
 # Added by me
+config.ini
 *.swp
 *~
