@@ -73,3 +73,9 @@ def then_text_in_response(context, text):
     value = context.zato.response.data_impl
     assert text not in value, 'Text "`{}`" is in response.'.format(text)
 
+@given('I add "{value}" to the URL path')
+@obtain_values
+def given_add_to_url_path(context, value):
+    context.zato.request.url_path = context.zato.request.get('url_path', '') + value
+    context.zato.debug_info = context.zato.request.get('url_path', '')
+
