@@ -140,8 +140,9 @@ def after_scenario(context, scenario):
         except:
             pass
         add_to_doc(code, "code")
-        add_to_doc("Response-code:" + str(context.zato.response.data.status_code), "h3")
+        # Need to put these here, since we might have cleaned up the context..
         try:
+            add_to_doc("Response-code:" + str(context.zato.response.data.status_code), "h3")
             import json
             text = json.dumps(context.zato.response.data_impl, indent=4)
             if text:
