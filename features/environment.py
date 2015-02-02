@@ -81,7 +81,7 @@ def after_step(context, step):
         pp.pprint(context.zato.request)
         print("response:\n")
         try:
-            pp.pprint(context.zato.response)
+            pp.pprint(context.zato.response.data.text)
         except:
             print("No response object")
         print("/ context")
