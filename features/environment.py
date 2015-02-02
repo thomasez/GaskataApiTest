@@ -58,7 +58,7 @@ def add_to_doc(text, type):
             documentation += '== ' + text + ' ==' + '\n'
         if type == "h3":
             documentation += '=== ' + text + ' ===' + '\n'
-        if type == "code" or type == "jacascript":
+        if type == "code" or type == "javascript":
             documentation += '{{{\n' + text + '\n}}}\n' + '\n'
     elif PRINT_DOC_ON_PASSED == 'html':
         if type == "h1":
